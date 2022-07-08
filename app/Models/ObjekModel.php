@@ -11,5 +11,6 @@ class ObjekModel extends Model
 
 
    protected $useAutoIncrement = true;
-   protected $allowedFields = ['nama', 'kode', 'harga_anak', 'harga_dewasa'];
+   protected $allowedFields = ['nama', 'kode', 'harga_anak', 'harga_dewasa', 'image'];
+
 }

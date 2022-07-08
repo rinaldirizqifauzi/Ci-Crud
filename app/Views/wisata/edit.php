@@ -47,7 +47,6 @@
                         <td>
                             <a href="/wisata/detail/<?= $wisata['id']; ?>" class="btn btn-md btn-info">Detail</a>
                             <a href="/wisata/edit/<?= $wisata['id']; ?>" class="btn btn-md btn-warning">Edit</a>
-                            <a href="/wisata/delete/<?= $wisata['id']; ?>" class="btn btn-md btn-danger">Hapus</a>
                         </td>
                     </tr>
                     <?php endforeach;  ?>

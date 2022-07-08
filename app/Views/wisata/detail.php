@@ -41,7 +41,7 @@
                             <?= $ow['harga_dewasa']; ?>
                         </td>
                         <td>
-                        <a href="/wisata/edit/<?= $ow['id']; ?>" class="btn btn-md btn-warning">Edit</a>
+                            <a href="/wisata/edit/<?= $ow['id']; ?>" class="btn btn-md btn-warning">Edit</a>
                             <a href="/wisata/delete/<?= $ow['id']; ?>" class="btn btn-md btn-danger">Hapus</a>
                         </td>
                     </tr>
@@ -50,5 +50,8 @@
             </div>
         </div>
     </div>
+    <center>
+        <a href="/wisata" class="btn btn-md btn-primary">Kembali</a>
+    </center>
 </div>
 <?= $this->endSection('content'); ?>

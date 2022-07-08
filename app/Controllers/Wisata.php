@@ -51,16 +51,33 @@ class Wisata extends BaseController
                     'required' => ' harga dewasa wajib diisi !!',
                 ]
             ],
+            'image' => [
+                'rules' => 'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih Gambar terlebih dahulu !!',
+                    'max_size' => 'Ukuran gambar terlalu besar !!',
+                    'is_image' => 'Yang anda pilih bukan gambar !!',
+                    'mime_in' => 'Yang anda pilih bukan gambar !!',
+                ]
+            ],
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/wisata')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('/wisata')->withInput()->with('validation', $validation);
+            return redirect()->to('/wisata')->withInput();
         }
+        // Ambil Gambar
+        $fileImage = $this->request->getFile('image');
+        // Pindahkan file ke folder Img didalam public
+        $fileImage->move('img');
+        // Ambil nama file image
+        $namaImage = $fileImage->getName();
 
         $this->wisata->save([
            'nama' => $this->request->getVar('nama'),
            'harga_anak' => $this->request->getVar('harga_anak'),
            'kode' => $this->request->getVar('kode'),
-           'harga_dewasa' => $this->request->getVar('harga_dewasa')
+           'harga_dewasa' => $this->request->getVar('harga_dewasa'),
+           'image' => $namaImage,
         ]);
 
         return redirect()->to('/wisata');

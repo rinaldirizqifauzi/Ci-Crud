@@ -13,6 +13,9 @@
             <li>
                 <a href="/wisata">Wisata</a>
             </li>
+            <li>
+                <a href="/transaksi">Transaksi</a>
+            </li>
           </ul>
 
         </div>

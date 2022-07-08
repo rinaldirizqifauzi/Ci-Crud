@@ -29,6 +29,7 @@ $routes->setAutoRoute(true);
 
 
 $routes->get('/wisata', 'Wisata::index');
+$routes->get('/transaksi', 'Transaksi::index');
 
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

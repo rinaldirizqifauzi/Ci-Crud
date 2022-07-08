@@ -31,6 +31,10 @@ class Objekwisata extends Migration
                 'type'           => 'INT',
                 'constraint'     => 50,
             ],
+            'image' => [
+                'type'          => 'Varchar',
+                'constraint'    => 50
+            ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('objekwisata');
