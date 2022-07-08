@@ -52,9 +52,8 @@ class Wisata extends BaseController
                 ]
             ],
             'image' => [
-                'rules' => 'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[image,10024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'uploaded' => 'Pilih Gambar terlebih dahulu !!',
                     'max_size' => 'Ukuran gambar terlalu besar !!',
                     'is_image' => 'Yang anda pilih bukan gambar !!',
                     'mime_in' => 'Yang anda pilih bukan gambar !!',
@@ -67,10 +66,16 @@ class Wisata extends BaseController
         }
         // Ambil Gambar
         $fileImage = $this->request->getFile('image');
-        // Pindahkan file ke folder Img didalam public
-        $fileImage->move('img');
-        // Ambil nama file image
-        $namaImage = $fileImage->getName();
+        // apakah tidak ada gambar yang diupload
+        if($fileImage->getError() == 4){
+            $namaImage = 'default.png';
+        }else{
+            // generate nama image random
+            $namaImage = $fileImage->getRandomName();
+            // Pindahkan file ke folder Img didalam public
+            $fileImage->move('img', $namaImage);
+        }
+
 
         $this->wisata->save([
            'nama' => $this->request->getVar('nama'),

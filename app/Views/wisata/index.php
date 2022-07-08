@@ -105,11 +105,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="form-group">
-                                            <label for="image" class="col-lg-3 control-label">Gambar</label>
-                                            <div class="col-lg-9">
-                                                <input type="file" class="form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" name="image" id="image" placeholder="Masukan Harga Dewasa ..." value="<?= old('image') ?>">
+                                    <div class="col-lg-12">
+                                        <div class="form-group row">
+                                            <label for="image" class="col-lg-2 custom-file-label control-label">Gambar</label>
+                                            <div class="col-lg-2">
+                                                <img src="/img/default.png" class="img-thumbnail">
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input type="file" id="image" class="form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" name="image" id="image" onchange="previewImg()">
                                                 <strong  style="color: red; background-color:white"><?= ($validation->getError('image')) ?></strong>
                                             </div>
                                         </div>
@@ -119,6 +122,7 @@
                                 <ul class="pager">
                                     <lib><button type="submit" class="btn btn-md btn-primary">Simpan</button></lib>
                                 </ul>
+                                </div>
                                 </fieldset>
                             </form>
                             </div>
